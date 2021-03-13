@@ -6,3 +6,4 @@ Instalador de ngrok en termux de forma mas rapida
 * cd InstaladorXH-NgrokTunnel && bash Ngrok-Tunnel
 * listo!
 Si tiene problema de conexion, Encienda la Zona Wifi
+
