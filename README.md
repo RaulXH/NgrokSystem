@@ -8,9 +8,9 @@ Instalador de ngrok en termux de forma mas rapida
 ```
 cd $HOME
 
-git clone https://github.com/RaulXH/InstaladorXH-NgrokTunnel/
+git clone https://github.com/RaulXH/NgrokSystem/
 
-cd InstaladorXH-NgrokTunnel && bash Ngrok-Tunnel
+cd NgrokSystem && bash Ngrok-Tunnel
 
 ```
 
