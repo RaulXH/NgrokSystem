@@ -16,8 +16,7 @@ cd NgrokSystem && bash Ngrok-Tunnel
 
 # Caracteristica
 <p> Corrije la reconexion de ngrok </p>
-<p> Sin Zona Wifi (Hostshop), Conecta </p>
-<p> Si usa WIFI, tambien conecta </p>
+<p> Siempre conecta </p>
 <p> Descarga NGROK de acuerdo a tu tipo de arquitectura y version actualizada </p>
 
 
