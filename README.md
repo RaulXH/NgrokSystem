@@ -4,6 +4,10 @@ Ngrok installer in termux faster
 <hr>
 
 
+![](https://komarev.com/ghpvc/?username=RaulXH)
+
+
+
 # Commands
 ```
 cd $HOME
