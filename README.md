@@ -15,9 +15,10 @@ cd NgrokSystem && bash Ngrok-Tunnel
 ```
 
 # Characteristic
-
 _[+] Correct ngrok reconnection_
+
 _[+] Always connect_
+
 _[+] Download NGROK according to your type of architecture and updated version_
 
 # View
