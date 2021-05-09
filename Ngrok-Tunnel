@@ -48,6 +48,10 @@ declare -r Size='13M'
 #
 trap - INT
 #
+# User execute ngrok
+#
+echo 'export USER=$(whoami)' >> $PREFIX/etc/profile
+#
 until [[ $OSTYPE =~ ^linux-andr* ]]
 do
 	echo -e "\n${RED}[!] ${WHITE}Oɴʟʏ ғᴏʀ ᴛᴇʀᴍᴜx${RED}[!]${FORT}\n"
