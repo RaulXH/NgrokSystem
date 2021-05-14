@@ -4,7 +4,7 @@ Ngrok installer in termux faster
 <hr>
 
 
-![] (https://img.shields.io/github/license/RaulXH/NgrokSystem)
+![](https://img.shields.io/github/license/RaulXH/NgrokSystem)
 
 
 # Commands
