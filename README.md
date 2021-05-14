@@ -4,9 +4,6 @@ Ngrok installer in termux faster
 <hr>
 
 
-</p> <img alt="" align="right" src="https://badges.pufler.dev/visits/RaulXH/NgrokSystem?style=flat-square&label=Visits&color=9cf&logo=GitHub&logoColor=white&labelColor=373e4d"/> <img alt="" align="right" src="https://img.shields.io/github/repo-size/RaulXH/NgrokSystem?style=flat-square&label=Size&color=fa74b2&labelColor=37)
-
-
 # Commands
 ```
 cd $HOME
