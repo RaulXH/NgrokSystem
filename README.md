@@ -3,9 +3,7 @@ Ngrok installer in termux faster
 <p align="center"><img src="https://miro.medium.com/max/1698/0*PYiASVGm5RwolHt6.jpg" alt="ICON" align="center" border="1" width="800" height="auto"></p>
 <hr>
 
-![](https://badges.pufler.dev/visits/RaulXH/NgrokSystem)
-  ![](https://img.shields.io/github/license/RaulXH/NgrokSystem)
-  ![](https://img.shields.io/github/stars/RaulXH/NgrokSystem)
+![](https://badges.pufler.dev/visits/RaulXH/NgrokSystem?style=flat-square&logo=ngrok) ![](https://img.shields.io/github/license/RaulXH/NgrokSystem?style=flat-square&logo=ngrok) ![](https://img.shields.io/github/stars/RaulXH/NgrokSystem?style=flat-square&logo=ngrok)
 
 # Commands
 ```
