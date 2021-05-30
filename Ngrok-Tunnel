@@ -68,7 +68,7 @@ done
 __Package()
 {
 	printf "\n${GREEN}[✓] ${YELOW}Installing required packages ${GREEN}[✓]${FORT}\n\n"
-	pkg install resolv-conf wget tar proot ncurses-utils -y &>/dev/null
+	pkg install resolv-conf wget tar proot  -y &>/dev/null
 	#
 }
 SystemNgrok()
@@ -211,7 +211,7 @@ __Banner()
 	       		
 ${FORT}" 
 }
-[[ ! -x $TBIN/proot ]] || [[ ! -x $TBIN/wget ]] || [[ ! -x $TBIN/tput ]] || [[ ! -f $TECT/resolv.conf ]] || [[ ! -x $TBIN/tar ]] && __Package 
+[[ ! -x $TBIN/proot ]] || [[ ! -x $TBIN/wget ]] || [[ ! -f $TECT/resolv.conf ]] || [[ ! -x $TBIN/tar ]] && __Package 
 __downloadNgrok
 #
 #
