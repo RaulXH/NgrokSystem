@@ -211,7 +211,7 @@ __Banner()
 	       		
 ${FORT}" 
 }
-[[ ! -x $TBIN/proot ]] || [[ ! -x $TBIN/wget ]] || [[ ! -x $TBIN ]] || [[ ! -x $TBIN/tput ]] || [[ ! -f $TECT/resolv.conf ]] || [[ ! -x $TBIN/tar ]] && __Package 
+[[ ! -x $TBIN/proot ]] || [[ ! -x $TBIN/wget ]] || [[ ! -x $TBIN/tput ]] || [[ ! -f $TECT/resolv.conf ]] || [[ ! -x $TBIN/tar ]] && __Package 
 __downloadNgrok
 #
 #
