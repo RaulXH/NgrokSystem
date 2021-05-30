@@ -106,14 +106,14 @@ while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
 
 for i in "${spinner[@]}"
 do
-	tput civis
+	#tput civis
 	echo -ne "\033[34m\r[\e[0;50;32m\033[34m] \e[0;50;37mDownloading please wait.................\e[33m\033[34m[\033[33m$i\033[34m]\033[0m   ";
 	sleep $delay
 	printf "\b\b\b\b\b\b\b\b";
 done
 done
 printf "   \b\b\b\b\b"
-tput cnorm
+#tput cnorm
 printf "\e[0;50;94m [\e[0;50;33m Done \e[0;50;94m]${FORT}";
 echo "";
 
