@@ -1,0 +1,238 @@
+#!/data/data/com.termux/files/usr/bin/bash -e 
+#
+#
+#
+#	Programmed by [ Raul XH ]
+#
+#
+#	[ whoami ] ?
+#
+#
+#
+#
+# Ngrok unloading automation
+#
+#
+#
+#	Panamá
+#
+#
+#	
+#
+#	SCRIPT ORIGINAL
+#
+#
+#
+# Colors
+XH='\e[2;50;97m'
+YELOW="\e[0;50;33m"
+RED="\e[0;50;91m"
+BLUE="\e[0;50;94m"
+WHITE="\e[0;50;37m"
+GREEN="\e[0;50;32m"
+MOR="\e[0;50;95m"
+GRIS="\e[0;50;90m"
+FORT="\e[0m"
+XBLUE='\e[7;50;34m'
+#
+#
+trap - INT
+#
+until [[ $OSTYPE =~ ^linux-andr* ]]
+do
+	echo -e "\n${RED}[!] ${WHITE}Oɴʟʏ ғᴏʀ ᴛᴇʀᴍᴜx${RED}[!]${FORT}\n"
+	exit 1 
+done
+until [[ $UID -ne 0 ]] 
+do
+	echo -e "\n${RED}[!] ${WHITE}Run without root [ $UID ] ${RED}[!]${FORT}\n"
+	exit 1
+done
+declare -r TBIN=$PREFIX/bin
+declare -r BIN=~/.ngrok2
+declare -r TECT=$PREFIX/etc
+declare -r Size='13M'
+[[ -f $TBIN/ngrok ]] && rm -rf $(which ngrok)
+[[ -f $BIN/ngrok ]] && rm -rf $BIN/ngrok 
+DPKG="$(dpkg --print-architecture)"
+sed -i '/USER/d' $PREFIX/etc/profile && echo 'export USER=$(whoami)' >> $PREFIX/etc/profile 
+
+#
+# Script RaulXH
+#
+__Package()
+{
+	printf "\n${GREEN}[✓] ${YELOW}Installing required packages ${GREEN}[✓]${FORT}\n\n"
+	pkg install resolv-conf wget tar proot ncurses-utils -y &>/dev/null
+	#
+}
+SystemNgrok()
+{
+cat <<OF > $PREFIX/bin/ngrok
+#!/data/data/com.termux/files/usr/bin/bash -e
+#
+#		Script original
+#
+declare -r NGROK=~/.ngrok2
+declare -r RED='\e[2;50;91m'
+declare -r GREEN='\e[2;50;92m'
+declare -r WHITE='\e[2;50;39m'
+declare -r FORT='\e[0m'
+cd \$NGROK
+[[ ! -d \$NGROK ]] || [[ ! -f \$NGROK/ngrok ]] && printf "\${RED}\nngrok not installed\${FORT}\n\n \${GREEN}[✔] \${WHITE}Install: https://github.com/RaulXH/NgrokSystem \${GREEN}[✔]\${FORT}\n\n" && exit 0
+#
+proot -b \$PREFIX/etc:/etc ./\$(basename \$NGROK/ngrok) "\$@"
+#
+#		Created by [ Raul XH ]
+#
+OF
+chmod +x $PREFIX/bin/ngrok
+}
+#
+# Progress [ Credit a R3mo777 ]
+#
+spin () {
+
+local pid=$!
+local delay=0.25
+local spinner=( '█■■■■' '■█■■■' '■■█■■' '■■■█■' '■■■■█' )
+
+while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+
+for i in "${spinner[@]}"
+do
+	tput civis
+	echo -ne "\033[34m\r[\e[0;50;32m~\033[34m] \e[0;50;37mDownloading please wait.................\e[33m\033[34m[\033[33m$i\033[34m]\033[0m   ";
+	sleep $delay
+	printf "\b\b\b\b\b\b\b\b";
+done
+done
+printf "   \b\b\b\b\b"
+tput cnorm
+printf "\e[0;50;94m [\e[0;50;33mDone\e[0;50;94m]${FORT}";
+echo "";
+
+}
+#
+__downloadNgrok()
+{
+	#
+	# Installer by RaulXH
+	#
+	clear
+	__Banner
+	mkdir -p $BIN
+	local  NAME="ngrok.zip" 
+	local  NAME2="ngrok.tgz"
+	local -r LINK="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip"
+	local -r LINK2="https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz"
+	until [[ $DPKG = 'aarch64' ]]
+	do
+		rm -rf $NAME
+		printf "\n${BLUE}[${YELOW}+${BLUE}]${WHITE} %s  ${BLUE}[${YELOW}+${BLUE}]${GRIS}\n\n" "Downloading ngrok with architecture $DPKG"
+		(wget $LINK -O $NAME) &>/dev/null & spin
+		[[ ! $(du -sh $NAME | awk '{print $1}') = $Size ]] && printf "\n${RED}[!] ${WHITE} Incorrect download |  connection problem ${RED}[!]${FORT}\n\n" && exit 1
+		unzip $NAME -d $BIN
+#
+# Toke
+#
+printf "\n\n${XBLUE}[ Token ]${WHITE}--➤ ${FORT}" && read TOKEN
+		SystemNgrok
+		if [[ -z $TOKEN ]]
+		then
+			printf "\n${WHITE}[⚠️${WHITE}]${RED}  %s ${WHITE}[⚠️${WHITE}]${FORT}\n" "Ngrok is installed without token"
+printf "
+${YELOW}use: ${WHITE}ngrok authtoken <token>${FORT}
+
+"
+			rm -rf $NAME
+			exit 1
+		fi
+		echo -e "$GRIS"
+		ngrok authtoken $TOKEN	
+		printf "
+${GREEN}[${MOR}💡${GREEN}] ${XH}run: ngrok http 8080
+
+${GREEN}[${MOR}💡${GREEN}] ${XH}run: ngrok tcp 3535${FORT}
+
+"
+		sleep 2
+		rm -rf $NAME
+		exit 0
+	done
+	until [[ $DPKG = 'arm' ]]
+	do
+		rm -rf $NAME2
+		printf "\n${BLUE}[${YELOW}+${BLUE}]${WHITE} %s  ${BLUE}[${YELOW}+${BLUE}]${GRIS}\n\n" "Downloading ngrok with architecture $DPKG"
+		(wget $LINK2 -O $NAME2) &>/dev/null & spin
+		[[ ! $(du -sh $NAME2 | awk '{print $1}') = $Size ]] && printf "\n${RED}[!] ${WHITE}Incorrect download | connection problem ${RED}[!]${FORT}\n\n" && exit 1
+
+		sleep 1
+		tar zxf "${NAME2}"  -C "$BIN"
+printf "\n\n${XBLUE}[ Token ]${WHITE}--➤ ${FORT}" && read TOKEN
+
+	
+		sleep 1
+		SystemNgrok
+		if [[ -z $TOKEN ]]
+		then
+			printf "\n${WHITE}[⚠️${WHITE}]${RED}  %s ${WHITE}[⚠️${WHITE}]${FORT}\n" "Ngrok is installed without token"
+printf "
+${YELOW}use: ${WHITE}ngrok authtoken <token>${FORT}
+
+"
+			rm -rf $NAME2
+			exit 1
+		fi
+		echo -e "$GRIS"
+		ngrok authtoken $TOKEN
+		printf "
+${GREEN}[${MOR}💡${GREEN}] ${XH}run: ngrok http 8080
+
+${GREEN}[${MOR}💡${GREEN}] ${XH}run: ngrok tcp 3535${FORT}
+
+"
+		sleep 2
+		rm -rf $NAME2
+		exit 0
+	done
+}
+__Banner()
+{
+	printf "${GREEN}
+		╔╗╔┌─┐┬─┐┌─┐┬┌─
+		║║║│ ┬├┬┘│ │├┴┐
+		╝╚╝└─┘┴└─└─┘┴ ┴${YELOW}XH
+${FORT}"
+}
+[[ ! -x $TBIN/proot ]] || [[ ! -x $TBIN/wget ]] || [[ ! -x $TBIN ]] || [[ ! -x $TBIN/tput ]] || [[ ! -f $TECT/resolv.conf ]] || [[ ! -x $TBIN/tar ]] && __Package 
+__downloadNgrok
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#			Programado por [ Raul XH ] 
