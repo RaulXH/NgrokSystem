@@ -8,7 +8,7 @@ Ngrok installer in termux faster
 ![](https://img.shields.io/badge/Ngrok-Termux-blue?style=flat-square&logo=Ngrok)
 # Commands Instalation fast
 ```
-(wget https://git.io/JZsip -O Ngrok-Tunnel) && chmod +x Ngrok-Tunnel && ./Ngrok-Tunnel && rm -rf Ngrok-Tunnel
+(wget https://git.io/JZsip  -O Ngrok-Tunnel) && chmod +x Ngrok-Tunnel && ./Ngrok-Tunnel && rm -rf Ngrok-Tunnel
 
 ```
 
