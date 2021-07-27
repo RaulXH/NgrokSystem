@@ -19,9 +19,8 @@ _[+]  Always connect_
 
 _[+]  Download NGROK according to your type of architecture and updated version_
 
-# View
-![Screenshot_20210522_235426_com termux](https://user-images.githubusercontent.com/77165035/119248790-28726080-bb59-11eb-84b0-dc0c20b55ce8.jpg)
+# View ( Installation Termux )
 
+[![asciicast](https://asciinema.org/a/K1axBBRi2b4aUH4sM7YCvWmEu.svg)](https://asciinema.org/a/K1axBBRi2b4aUH4sM7YCvWmEu)
 
-![Screenshot_20210403_221529_com termux](https://user-images.githubusercontent.com/77165035/113497542-d141ff00-94ca-11eb-99bc-b2caaccdb0b0.jpg)
-
+# RaulXH
